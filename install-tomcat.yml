@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - package:
+        name: tomcat9
+        state: present
