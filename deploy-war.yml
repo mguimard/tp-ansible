@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - copy:
+        src: sample.war
+        dest: "{{autodeploy_dir}}
