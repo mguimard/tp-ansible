@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - uri:
+        url: "http://localhost:8080
+        status_code: 200
