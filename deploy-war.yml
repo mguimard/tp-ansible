@@ -2,4 +2,4 @@
   tasks:
     - copy:
         src: sample.war
-        dest: "{{autodeploy_dir}}
+        dest: "{{autodeploy_dir}}"
