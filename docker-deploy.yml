@@ -8,4 +8,4 @@
           - 3001:2368
         env:
           NODE_ENV: development
-          url: "http://{{ ansible_ssh_host }}:3001
+          url: "http://{{ ansible_ssh_host }}:3001"
