@@ -30,11 +30,14 @@
               - docker-ce-cli
               - containerd.io
             update_cache: true
-        - user:
-            name: vagrant
-            groups:
-              - docker
-            append: true
+
+    - name: On s'assure que notre user vagrant soit dans le groupe docker
+      user:
+        name: vagrant
+        groups:
+          - docker
+        append: true
+        
     - name: "On s'assure que docker soit démarré"
       service:
         name: docker
