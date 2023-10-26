@@ -1,0 +1,38 @@
+- hosts: all
+  tasks:
+    - name: "On s'assure que les dépendances soient installées"
+      package:
+        name: python3-flask
+
+    - name: "On s'assure d'avoir copié app.py"
+      template:
+        src: app.py
+        dest: /home/vagrant/my-app/app.py
+        owner: vagrant
+        group: vagrant
+        mode: '0644'
+      notify: restart_service
+      
+    - name: "On s'assure d'avoir notre fichier de service"
+      copy:
+        src: my-app.service
+        dest: /etc/systemd/system/
+      notify: reload_systemd
+
+    - name: "On s'assure que le service soit démarré"
+      service:
+        name: my-app
+        state: started
+  
+  handlers:
+    - name: reload_systemd
+      systemd:
+        daemon_reload: true
+
+    - name: restart_service
+      service:
+        name: my-app
+        state: restarted
+
+        
+  
