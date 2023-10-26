@@ -7,4 +7,6 @@
 
     - name: On check les packages python
       community.general.pip_package_info:
+        clients:
+          - pip3
         
