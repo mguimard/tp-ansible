@@ -1,6 +1,10 @@
 - hosts: all
   tasks:
-    - name: On s'assure d'installer docker      
+    - name: On récupere la liste des paquets installés
+      package_facts:
+    
+    - name: On s'assure d'installer docker sur debian    
+      when: ansible_os_family == 'Debian' and 'docker-ce' not in ansible_packages
       block:
         - apt:
             name: curl
@@ -17,6 +21,7 @@
             groups:
               - docker
             append: true
-        - service:
-            name: docker
-            state: started
+    - name: "On s'assure que docker soit démarré"
+      service:
+        name: docker
+        state: started
