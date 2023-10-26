@@ -1,5 +1,8 @@
 - hosts: all
   tasks:
+    - name: On s'assure d'avoir les dépendances pour le module docker_container
+      package:
+        name: python3-docker
     - name: On s'assure d'avoir notre container
       community.docker.docker_container:
         name: my-ghost
