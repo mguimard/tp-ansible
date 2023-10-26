@@ -3,7 +3,13 @@
     - name: "On s'assure que les dépendances soient installées"
       package:
         name: python3-flask
-
+    - name: "On s'assure que le dossier my-app existe"
+      file:
+        path: /home/vagrant/my-app
+        state: directory
+        owner: vagrant
+        group: vagrant
+    
     - name: "On s'assure d'avoir copié app.py"
       template:
         src: app.py
