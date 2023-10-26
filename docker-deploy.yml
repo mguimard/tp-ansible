@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+    - name: On s'assure d'avoir notre container
+      community.docker.docker_container:
+        name: my-ghost
+        image: ghost
+        ports:
+          - 3001:2368
+        env:
+          NODE_ENV: development
+          url: "http://{{ ansible_ssh_host }}:3001
