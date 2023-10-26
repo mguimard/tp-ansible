@@ -1,6 +1,6 @@
 - hosts: all
   tasks:
-    - name: On récupere la liste des paquets installés
+    - name: On récupère la liste des paquets installés
       package_facts:
     
     - name: On s'assure d'installer docker sur debian    
@@ -9,7 +9,7 @@
         - apt:
             name: curl
         - shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg"
-        - shell: "echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null"
+        - shell: 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/nul'
         - apt:
             name:
               - docker-ce
