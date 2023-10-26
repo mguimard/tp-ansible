@@ -4,7 +4,7 @@
       package_facts:
     
     - name: On s'assure d'installer docker sur centos
-      when: ansible_os_family == 'RedHat' and 'docker-ce' not in ansible_packages
+      when: ansible_os_family == 'RedHat' and 'docker-ce' not in ansible_facts.packages
       block:
         - yum:
             name: yum-utils
@@ -18,7 +18,7 @@
               - docker-compose-plugin
     
     - name: On s'assure d'installer docker sur debian    
-      when: ansible_os_family == 'Debian' and 'docker-ce' not in ansible_packages
+      when: ansible_os_family == 'Debian' and 'docker-ce' not in ansible_facts.packages
       block:
         - apt:
             name: curl
