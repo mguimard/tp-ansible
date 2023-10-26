@@ -3,7 +3,9 @@
     - name: On s'assure d'avoir les dépendances pour le module docker_container
       block:
         - package:
-            name: python3-setuptools
+            name: 
+             - python3-setuptools
+             - python3-pip
         - pip:
             name: docker
             
