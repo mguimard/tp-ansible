@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - name: Ensure dependencies are installed
+      package:
+        name: python3-flask
