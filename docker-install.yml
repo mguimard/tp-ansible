@@ -3,6 +3,20 @@
     - name: On récupère la liste des paquets installés
       package_facts:
     
+    - name: On s'assure d'installer docker sur centos
+      when: ansible_os_family == 'RedHat' and 'docker-ce' not in ansible_packages
+      block:
+        - yum:
+            name: yum-utils
+        - shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+        - yum:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+              - docker-buildx-plugin 
+              - docker-compose-plugin
+    
     - name: On s'assure d'installer docker sur debian    
       when: ansible_os_family == 'Debian' and 'docker-ce' not in ansible_packages
       block:
